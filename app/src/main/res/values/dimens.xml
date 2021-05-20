@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General -->
+    <dimen name="margin16">16dp</dimen>
+    <dimen name="margin32">32dp</dimen>
+
+    <dimen name="main_header_text_size">24sp</dimen>
+    <dimen name="header_text_size">16sp</dimen>
+
+
+    <!-- Quiz preferences -->
+    <dimen name="quiz_options_start_guideline">16dp</dimen>
+    <dimen name="quiz_options_end_guideline">16dp</dimen>
+
+</resources>

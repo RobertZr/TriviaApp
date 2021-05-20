@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/textview_quiz_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin16"
+            android:text="@string/quiz_options_header"
+            android:textSize="@dimen/main_header_text_size"
+            app:layout_constraintEnd_toStartOf="@id/vertical_end_guideline"
+            app:layout_constraintStart_toEndOf="@id/vertical_start_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_question_number_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin32"
+            android:text="@string/question_number_header"
+            android:textSize="@dimen/header_text_size"
+            app:layout_constraintStart_toEndOf="@id/vertical_start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/textview_quiz_header" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_text_input_question_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/vertical_end_guideline"
+            app:layout_constraintStart_toEndOf="@id/vertical_start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/textview_question_number_header">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_question_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@string/default_question_number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textview_question_category_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin16"
+            android:text="@string/question_categories_header"
+            android:textSize="@dimen/header_text_size"
+            app:layout_constraintStart_toEndOf="@id/vertical_start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/layout_text_input_question_number" />
+
+        <Spinner
+            android:id="@+id/dropdown_categories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/vertical_end_guideline"
+            app:layout_constraintStart_toEndOf="@id/vertical_start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/textview_question_category_header" />
+
+        <TextView
+            android:id="@+id/textview_question_difficulty_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin16"
+            android:text="@string/question_difficulty_header"
+            android:textSize="@dimen/header_text_size"
+            app:layout_constraintStart_toEndOf="@id/vertical_start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/dropdown_categories" />
+
+        <Spinner
+            android:id="@+id/dropdown_difficulties"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/vertical_end_guideline"
+            app:layout_constraintStart_toEndOf="@id/vertical_start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/textview_question_difficulty_header" />
+
+        <TextView
+            android:id="@+id/textview_question_type_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin16"
+            android:text="@string/question_type_header"
+            android:textSize="@dimen/header_text_size"
+            app:layout_constraintStart_toEndOf="@id/vertical_start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/dropdown_difficulties" />
+
+        <Spinner
+            android:id="@+id/dropdown_types"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/vertical_end_guideline"
+            app:layout_constraintStart_toEndOf="@id/vertical_start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/textview_question_type_header" />
+
+        <Button
+            android:id="@+id/start_quiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin16"
+            android:text="@string/button_quiz_options"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dropdown_types" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/quiz_options_start_guideline"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/quiz_options_end_guideline"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">TriviaApp</string>
+
+    <!-- Quiz options -->
+    <string name="quiz_options_header">Select the options for the quiz</string>
+    <string name="question_number_header">Number of Questions:</string>
+    <string name="default_question_number">10</string>
+
+    <string name="question_categories_header">Select category:</string>
+    <string-array name="categories">
+        <item>Any Category</item>
+        <item>General Knowledge</item>
+        <item>Entertainment: Books</item>
+        <item>Entertainment: Film</item>
+        <item>Entertainment: Music</item>
+        <item>Entertainment: Musicals &amp; Theaters</item>
+        <item>Entertainment: Television</item>
+        <item>Entertainment: Video Games</item>
+        <item>Entertainment: Board Games</item>
+        <item>Science &amp; Nature</item>
+        <item>Science: Computers</item>
+        <item>Science: Mathematics</item>
+        <item>Mythology</item>
+        <item>Sports</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Politics</item>
+        <item>Art</item>
+        <item>Celebrities</item>
+        <item>Animals</item>
+        <item>Vehicles</item>
+        <item>Entertainment: Comics</item>
+        <item>Science: Gadgets</item>
+        <item>Entertainment: Japanese Anime &amp; Manga</item>
+        <item>Entertainment: Cartoon &amp; Animations</item>
+    </string-array>
+
+    <string name="question_difficulty_header">Select Difficulty:</string>
+    <string-array name="difficulties">
+        <item>Any Difficulty</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+
+    <string name="question_type_header">Select Type:</string>
+    <string-array name="types">
+        <item>Any Type</item>
+        <item>Multiple Choice</item>
+        <item>True / False</item>
+    </string-array>
+
+    <string name="button_quiz_options">Start Quiz!</string>
+</resources>
