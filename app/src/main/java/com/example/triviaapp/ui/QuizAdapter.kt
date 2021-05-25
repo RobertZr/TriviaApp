@@ -4,17 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.triviaapp.data.remote.model.QuizItem
 import com.example.triviaapp.databinding.RecyclerviewQuizItemBinding
 
 class QuizAdapter(
-        private val dataSet: List<QuizItem>
+        private var dataSet: List<QuizItem>
 ) : RecyclerView.Adapter<QuizAdapter.ViewHolder>() {
 
     private val hasAnswersAdded = mutableMapOf<String, String>()
 
-    fun getAnswers() : MutableMap<String, String> {
+    fun getAnswers(): MutableMap<String, String> {
         return hasAnswersAdded
     }
 
@@ -60,5 +61,39 @@ class QuizAdapter(
         newList.add(correct)
         newList.shuffle()
         return newList
+    }
+
+    fun updateQuizList(quizList: List<QuizItem>) {
+        val oldList = dataSet
+        val diffResult: DiffUtil.DiffResult = DiffUtil.calculateDiff(
+                QuizItemDiffCallback(
+                        oldList,
+                        quizList
+                )
+        )
+        dataSet = quizList
+        diffResult.dispatchUpdatesTo(this)
+    }
+
+    class QuizItemDiffCallback(
+            var oldQuizList: List<QuizItem>,
+            var newQuizList: List<QuizItem>
+    ) : DiffUtil.Callback() {
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldQuizList[oldItemPosition].question == newQuizList[newItemPosition].question
+        }
+
+        override fun getOldListSize(): Int {
+            return oldQuizList.size
+        }
+
+        override fun getNewListSize(): Int {
+            return newQuizList.size
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldQuizList[oldItemPosition] == newQuizList[newItemPosition]
+        }
+
     }
 }

@@ -7,25 +7,51 @@
         android:layout_width="match_parent">
 
         <TextView
-            android:id="@+id/result"
+            android:id="@+id/quiz_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello quiz result!"
+            android:text="@string/result_quiz_category"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/quiz_difficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/result_quiz_difficulty"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quiz_category" />
+
+        <TextView
+            android:id="@+id/quiz_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/result_quiz_type"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quiz_difficulty" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quiz_type" />
+
         <Button
             android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play Again"
+            android:text="@string/result_next_button"
             android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/result"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/result" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

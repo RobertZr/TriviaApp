@@ -1,10 +1,10 @@
 package com.example.triviaapp.data
 
 import com.example.triviaapp.data.local.LocalDataSource
+import com.example.triviaapp.data.local.entity.LatestQuiz
 import com.example.triviaapp.data.remote.RemoteDataSource
 import com.example.triviaapp.data.remote.model.Quiz
 import io.reactivex.Observable
-import io.reactivex.Single
 import retrofit2.adapter.rxjava2.Result
 
 class TriviaRepository private constructor(
@@ -29,4 +29,10 @@ class TriviaRepository private constructor(
                        type: String?): Observable<Result<Quiz>> {
         return remoteDataSource.fetchQuizItems(amount, category, difficulty, type)
     }
+
+    fun fetchCachedQuiz() = localDataSource.fetchLocalQuiz()
+
+    fun cacheQuiz(quiz: List<LatestQuiz>) = localDataSource.cacheQuizItems(quiz)
+
+    fun clearCache() = localDataSource.deleteLocalQuiz()
 }

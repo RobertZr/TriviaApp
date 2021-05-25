@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "latest_quiz")
 data class LatestQuiz(
-        @PrimaryKey(autoGenerate = true)
+        @PrimaryKey(autoGenerate = false)
         var uuid: Int = 0,
 
         @ColumnInfo(name = "category")
@@ -41,7 +41,8 @@ fun LatestQuiz.mapToDomain() = QuizItem(
         incorrect = this.incorrect
 )
 
-fun QuizItem.mapToLocal() = LatestQuiz(
+fun QuizItem.mapToLocal(id: Int) = LatestQuiz(
+        uuid = id,
         category = this.category,
         type = this.type,
         difficulty = this.difficulty,

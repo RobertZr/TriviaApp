@@ -1,9 +1,7 @@
 package com.example.triviaapp.data.local
 
 import com.example.triviaapp.data.local.dao.QuizItemsDao
-import com.example.triviaapp.data.local.entity.mapToDomain
-import com.example.triviaapp.data.local.entity.mapToLocal
-import com.example.triviaapp.data.remote.model.Quiz
+import com.example.triviaapp.data.local.entity.LatestQuiz
 
 class LocalDataSourceImpl(database: TriviaDatabase) : LocalDataSource {
 
@@ -19,20 +17,9 @@ class LocalDataSourceImpl(database: TriviaDatabase) : LocalDataSource {
 
     private val quizCache: QuizItemsDao = database.quizItemsDao()
 
-    override fun cacheQuizItems(quiz: Quiz) {
-        quiz.results.forEach {
-            quizCache.insert(it.mapToLocal())
-        }
-    }
+    override fun cacheQuizItems(quiz: List<LatestQuiz>) = quizCache.insert(quiz)
 
-    override fun fetchLocalQuiz(): Quiz {
-        return Quiz(
-                99,
-                quizCache.getLatestQuiz().map { it.mapToDomain() }
-        )
-    }
+    override fun fetchLocalQuiz() = quizCache.getLatestQuiz()
 
-    override fun deleteLocalQuiz() {
-        quizCache.delete()
-    }
+    override fun deleteLocalQuiz() = quizCache.delete()
 }

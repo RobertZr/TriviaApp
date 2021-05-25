@@ -8,7 +8,7 @@ import com.example.triviaapp.data.local.entity.LatestQuiz
 
 @Database(
         entities = [LatestQuiz::class],
-        version = 1,
+        version = 2,
         exportSchema = false
 )
 @TypeConverters(Converters::class)

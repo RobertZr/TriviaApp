@@ -1,5 +1,6 @@
 package com.example.triviaapp.ui.fragment
 
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -26,21 +27,35 @@ class QuizFragment : BaseFragment<FragmentQuizBinding, ViewModelFactory>() {
         val adapter = QuizAdapter(quizQuestion)
         binding.quizRecyclerView.adapter = adapter
 
+        viewModel.loadingLiveData.observe(this, Observer {
+            binding.quizLoading.visibility = it
+            when (it) {
+                View.VISIBLE -> binding.next.visibility = View.GONE
+                View.GONE -> binding.next.visibility = View.VISIBLE
+            }
+        })
+
         viewModel.errorLiveData.observe(this, Observer {
             binding.quizError.text = it
         })
 
         viewModel.quizLiveData.observe(this, Observer {
-            quizQuestion.clear()
-            quizQuestion.addAll(it.results)
-            binding.quizRecyclerView.adapter?.notifyDataSetChanged()
+            adapter.updateQuizList(it.results)
         })
-
-        viewModel.fetchQuiz()
 
         binding.next.setOnClickListener {
             viewModel.calculateResult(adapter.getAnswers())
             findNavController().navigate(QuizFragmentDirections.actionQuizFragmentToResultFragment())
         }
+    }
+
+    override fun onStop() {
+        viewModel.cacheQuiz(viewModel.quizLiveData.value!!)
+        super.onStop()
+    }
+
+    override fun onStart() {
+        viewModel.fetchQuiz()
+        super.onStart()
     }
 }

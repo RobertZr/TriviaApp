@@ -51,4 +51,13 @@
     </string-array>
 
     <string name="button_quiz_options">Start Quiz!</string>
+
+    <!-- Quiz main -->
+    <string name="quiz_submit_button">Submit!</string>
+
+    <!-- Quiz result -->
+    <string name="result_quiz_category">Quiz category: %s</string>
+    <string name="result_quiz_difficulty">Quiz difficulty: %s</string>
+    <string name="result_quiz_type">Quiz type: %s</string>
+    <string name="result_next_button">Play again!</string>
 </resources>

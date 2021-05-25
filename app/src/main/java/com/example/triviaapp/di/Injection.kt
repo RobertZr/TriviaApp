@@ -7,6 +7,9 @@ import com.example.triviaapp.data.local.LocalDataSourceImpl
 import com.example.triviaapp.data.local.TriviaDatabase
 import com.example.triviaapp.data.remote.RemoteDataSource
 import com.example.triviaapp.data.remote.RemoteDataSourceImpl
+import com.example.triviaapp.domain.usecases.CacheQuizUseCase
+import com.example.triviaapp.domain.usecases.ClearCacheUseCase
+import com.example.triviaapp.domain.usecases.FetchLocalQuizUseCase
 import com.example.triviaapp.domain.usecases.FetchQuizUseCase
 
 
@@ -23,4 +26,10 @@ object Injection {
     fun provideDataBase(): TriviaDatabase = TriviaApp.appContainer.getInstance()
 
     fun provideFetchQuizUseCase() = FetchQuizUseCase(provideTriviaRepository())
+
+    fun provideFetchLocalQuizUseCase() = FetchLocalQuizUseCase(provideTriviaRepository())
+
+    fun provideClearCacheUseCase() = ClearCacheUseCase(provideTriviaRepository())
+
+    fun provideCacheQuizUseCase() = CacheQuizUseCase(provideTriviaRepository())
 }
