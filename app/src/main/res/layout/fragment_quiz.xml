@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/quiz_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -42,7 +43,7 @@
                 tools:listitem="@layout/recyclerview_quiz_item" />
 
             <Button
-                android:id="@+id/next"
+                android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/quiz_submit_button"

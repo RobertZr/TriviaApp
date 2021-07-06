@@ -14,7 +14,7 @@ class QuizFragment : BaseFragment<FragmentQuizBinding, ViewModelFactory>() {
 
     private val viewModel: SharedViewModel by activityViewModels { viewModelFactory }
 
-    private val quizQuestion = mutableListOf<QuizItem>()
+    val quizQuestion = mutableListOf<QuizItem>()
 
     override val viewModelFactory: ViewModelFactory
         get() = ViewModelFactory()
@@ -30,8 +30,8 @@ class QuizFragment : BaseFragment<FragmentQuizBinding, ViewModelFactory>() {
         viewModel.loadingLiveData.observe(this, Observer {
             binding.quizLoading.visibility = it
             when (it) {
-                View.VISIBLE -> binding.next.visibility = View.GONE
-                View.GONE -> binding.next.visibility = View.VISIBLE
+                View.VISIBLE -> binding.submit.visibility = View.GONE
+                View.GONE -> binding.submit.visibility = View.VISIBLE
             }
         })
 
@@ -43,7 +43,7 @@ class QuizFragment : BaseFragment<FragmentQuizBinding, ViewModelFactory>() {
             adapter.updateQuizList(it.results)
         })
 
-        binding.next.setOnClickListener {
+        binding.submit.setOnClickListener {
             viewModel.calculateResult(adapter.getAnswers())
             findNavController().navigate(QuizFragmentDirections.actionQuizFragmentToResultFragment())
         }

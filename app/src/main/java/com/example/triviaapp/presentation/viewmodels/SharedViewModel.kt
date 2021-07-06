@@ -1,6 +1,5 @@
 package com.example.triviaapp.presentation.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.triviaapp.data.local.entity.LatestQuiz
@@ -37,7 +36,7 @@ class SharedViewModel(
 
     private val disposables = CompositeDisposable()
 
-    private var hasQuizCached = false
+    var hasQuizCached = false
 
     fun fetchQuiz() {
         loadingLiveData.postValue(0)
@@ -88,7 +87,6 @@ class SharedViewModel(
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess {
                     loadingLiveData.postValue(8)
-                    Log.d("ASDASD", "fetchLocalQuiz: Completed")
                 }
                 .subscribeBy { quizList ->
                     val x = mutableListOf<QuizItem>()

@@ -39,7 +39,7 @@ class ResultFragment : BaseFragment<FragmentQuizResultBinding, ViewModelFactory>
         )
 
 
-        binding.next.setOnClickListener {
+        binding.replay.setOnClickListener {
             viewModel.clearCache()
             findNavController().navigate(ResultFragmentDirections.actionResultFragmentToQuizOptionsFragment())
         }
